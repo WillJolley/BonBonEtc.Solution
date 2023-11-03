@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Library.Models;
+using BonBonEtc.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Library
+namespace BonBonEtc
 {
   class Program
   {
@@ -14,7 +14,7 @@ namespace Library
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<LibraryContext>(
+      builder.Services.AddDbContext<BonBonEtcContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
