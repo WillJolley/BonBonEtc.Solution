@@ -1,0 +1,14 @@
+body {
+  background-color: palevioletred;
+  color: wheat;
+}
+
+div#footer {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	color:mediumslateblue;
+	background:black;
+	padding:8px;
+}
