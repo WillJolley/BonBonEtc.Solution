@@ -9,6 +9,6 @@ namespace BonBonEtc.Models
     public DbSet<Flavor> Flavors { get; set; }
     public DbSet<FlavorTreat> FlavorTreats { get; set; }
 
-    public ToDoListContext(DbContextOptions options) : base(options) { }
+    public BonBonEtcContext(DbContextOptions options) : base(options) { }
   }
 }

@@ -23,7 +23,7 @@ namespace BonBonEtc
                       );
 
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<LibraryContext>()
+            .AddEntityFrameworkStores<BonBonEtcContext>()
             .AddDefaultTokenProviders();
 
       builder.Services.Configure<IdentityOptions>(options =>
