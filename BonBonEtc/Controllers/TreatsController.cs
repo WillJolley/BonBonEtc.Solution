@@ -3,9 +3,11 @@ using BonBonEtc.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BonBonEtc.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly BonBonEtcContext _db;
@@ -15,11 +17,13 @@ namespace BonBonEtc.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Treats.ToList());
     }
 
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Treat thisTreat = _db.Treats
@@ -98,7 +102,7 @@ namespace BonBonEtc.Controllers
       FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
       _db.FlavorTreats.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = joinEntry.TreatId });
     }
   }
 }

@@ -1,14 +1,19 @@
 body {
   background-color: palevioletred;
   color: wheat;
+  text-align: center;
 }
 
 div#footer {
 	position:fixed;
 	bottom:0px;
-	left:0px;
+	text-align: center;
 	width:100%;
 	color:mediumslateblue;
 	background:black;
 	padding:8px;
+}
+
+li {
+  list-style-type: none;
 }
