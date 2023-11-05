@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@using BonBonEtc.Models
+@model BonBonEtc.Models.Flavor
+
+<h2>Flavor's Treats</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This flavor is not included in any treats.</p>
+}
+else
+{
+  <h4>This flavor is incorporated in the following treats:</h4>
+  <ul>
+  @foreach(FlavorTreat join in Model.JoinEntities)
+  {
+    <li>@join.Treat.Name</li>
+    @using (Html.BeginForm("DeleteJoin", "Flavors"))
+    {
+      @Html.Hidden("joinId", @join.FlavorTreatId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Delete Tag", "Delete", new { id = Model.FlavorId })</p>
