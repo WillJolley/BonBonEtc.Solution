@@ -42,9 +42,16 @@ namespace BonBonEtc.Controllers
     [HttpPost]
     public ActionResult Create(Flavor flav)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(flav);
+      }
+      else
+      {
       _db.Flavors.Add(flav);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult AddTreat(int id)
